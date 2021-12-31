@@ -7,34 +7,28 @@ Author: Chang Sun
 Author-email: 2721988848@qq.com
 License: UNKNOWN
 Description: # py-webrtcns
-        This is a python interface to the WebRTC noise suppression (NS).
+        This is a python interface to the WebRTC AEC.
         
         # How to use it
         
-        1. Install the webrtcns module:
+        1. Install the webrtcaec module:
         
         ```shell
-        git clone https://github.com/sunchang272/py-webrtcns.git
-        cd py-webrtcns
+        git clone https://github.com/sunchang272/py-webrtcaec.git
+        cd py-webrtcaec
         python setup.py install
         ```
         
-        2. Create a ``Ns`` object:
+        2. Create a ``AEC`` object:
         
         ```python
-        ns = webrtcns.Ns()
+        aec = webrtcaec.aec()
         ```
         
-        3. Set mode (0, 1, 2, 3):
+        2. Give it 2 short segment ("frame") of audio far and near. It only accepts 16-bit mono PCM audio, sampled at 16000Hz. A frame must be 160 samples:
         
         ```python
-        ns.set_mode(3)
-        ```
-        
-        4. Give it a short segment ("frame") of audio. It only accepts 16-bit mono PCM audio, sampled at 16000Hz. A frame must be 160 samples:
-        
-        ```python
-        ns.process(frame)
+        aec.process(far, near)
         ```
         
 Keywords: noise suppression speech enhancement denoise aec
